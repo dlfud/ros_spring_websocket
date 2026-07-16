@@ -12,11 +12,11 @@
 				<form action="/login" method="post">
           			<div class="inputDiv">
           				<input class="loginInput mb10" type="text" name="username" placeholder="ID" />
-            			<input class="loginInput" type="password" name="" placeholder="PW" />
+            			<input class="loginInput" type="password" name="password" placeholder="PW" />
           			</div>
 		          	<div class="btnDiv">
 		            	<button class="loginBtn" type="submit">로그인</button>
-		            	<button class="joinBtn" onClick={goJoinPage}>회원가입</button>
+		            	<button class="joinBtn" type="button" onclick=goJoinPage()>회원가입</button>
 	          		</div>
           		</form>
         	</div>

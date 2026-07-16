@@ -18,13 +18,3 @@ stomp.connect({}, function(){
     );
 
 });
-
-/*
-{
-    "topic": "battery",
-    "timestamp": 1784200000,
-    "data": {
-    "percentage": 82,
-        "voltage": 11.8
-}
-}*/

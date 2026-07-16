@@ -1,5 +1,7 @@
 package com.example.recycle.websocket;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.TextMessage;
@@ -36,4 +38,18 @@ public class RobotHandler extends TextWebSocketHandler {
                 data
         );
     }
+
+    /*@Override
+    protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
+
+        String payload = message.getPayload();
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode json = mapper.readTree(payload);
+        String topic = json.get("topic").asText();
+
+        template.convertAndSend(
+                "/topic/" + topic,
+                json.get("data")
+        );
+    }*/
 }

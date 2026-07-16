@@ -6,11 +6,13 @@
 <mapper namespace="com.example.recycle.dao.GeneralDao">
 
     <select id="findByUserId" parameterType="string" resultType="com.example.recycle.dto.MemberDto">
+        SELECT id, password, name
+        FROM member
+        WHERE id = #{userId}
+    </select>
 
-    SELECT user_id AS id, password, name
-    FROM member
-    WHERE user_id = #{userId}
-
-</select>
-
+    <insert id="join" parameterType="com.example.recycle.dto.MemberDto">
+        INSERT INTO member(id, password, name)
+        VALUES (#{id}, #{password}, #{name})
+    </insert>
 </mapper>
