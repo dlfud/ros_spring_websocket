@@ -10,7 +10,6 @@ public class EventLogController {
     @Autowired
     private EventLogService eventLogService;
 
-    // 로그인 성공 후 이동할 페이지
     @GetMapping("/eventLog")
     public String eventLog() {
         return "forward:/pages/eventLog.html";
