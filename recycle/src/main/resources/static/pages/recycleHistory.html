@@ -12,56 +12,74 @@
                 <a href="/dashboard" class="tab">대시보드</a>
                 <a href="/eventLog" class="tab">이벤트 로그</a>
                 <a href="/recycleHistory" class="tab active">쓰레기 수거 현황</a>
-                <a href="/setting" class="tab">설정</a>
+                <a href="/setting" class="tab">정보 / 설정</a>
             </nav>
 
             <div class="dashboard">
-                <div class="dflex mb20" style="justify-content: end !important;">
-                    <!-- Control -->
-                    <button class="control-btn start-btn">
-                        Start
-                    </button>
-                    <button class="control-btn stop-btn ml20">
-                        Stop / Return Home
-                    </button>
-                </div>
-
-                <div class="dflex">
-                    <!-- 상태 정보 -->
-                    <div class="card w250 h105">
-                        <h3>🔋 Battery</h3>
-                        <p>Battery : <span id="battery">95%</span></p>
-                        <p>Voltage : <span id="voltage">11.9V</span></p>
-                    </div>
-                    <div class="card w250 h105">
-                        <h3>🤖 Robot Status</h3>
-                        <p>Status : <span id="robotStatus">Idle</span></p>
-                        <p>Speed : <span id="speed">0.00 m/s</span></p>
-                    </div>
-                    <div class="card w250 h105">
-                        <h3>🌐 Detection</h3>
-                        <p>Object : <span class="">Plastic Bottle</span></p>
-                        <p>Confidence : <span class="">98%</span></p>
-                    </div>
-                    <div class="card w250 h105">
-                        <h3>📋 Mission</h3>
-                        <p id="mission">Waiting...</p>
-                    </div>
-                </div>
-
-                <div class="dflex">
-                    <!-- Camera -->
-                    <div class="card camera-card w555 mt20">
-                        <h3>📷 Camera</h3>
-                        <div class="camera-area">
-                            Camera Image
+                <!-- Summary -->
+                <div class="dflex mb20 pb20" style="border-bottom: 1px solid #ddd">
+                    <div style="border-right: 1px solid #ddd">
+                        <h3 class="mb20">📦 Total</h3>
+                        <div class="dflex">
+                            <div class="card summary-card mr20">
+                                <div>Total Collection</div>
+                                <strong id="totalCount">260</strong>
+                            </div>
+                            <div class="card summary-card mr20">
+                                <div>Success</div>
+                                <strong id="totalSuccess">245</strong>
+                            </div>
+                            <div class="card summary-card mr20">
+                                <div>Failed</div>
+                                <strong id="totalFail">15</strong>
+                            </div>
                         </div>
                     </div>
-                    <!-- Map -->
-                    <div class="card map-card w555 mt20">
-                        <h3>🗺 Map</h3>
-                        <div class="map-area">
-                            TurtleBot Map
+
+                    <div>
+                        <h3 class="mb20">📅 Today</h3>
+                        <div class="dflex">
+                            <div class="card summary-card mr20">
+                                <div>Today's Collection</div>
+                                <strong id="todayCount">12</strong>
+                            </div>
+                            <div class="card summary-card mr20">
+                                <div>Success</div>
+                                <strong id="todaySuccess">11</strong>
+                            </div>
+                            <div class="card summary-card mr20">
+                                <div>Failed</div>
+                                <strong id="todayFail">1</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Search -->
+                <h3>📅 Search</h3>
+                <div class="search-box mb20">
+                    <input type="date">
+                    <span>~</span>
+                    <input type="date">
+                    <button class="search-btn">
+                        Search
+                    </button>
+                </div>
+
+                <div class="dflex">
+                    <!-- Type -->
+                    <div class="w49p">
+                        <h3>♻️ Collection by Type</h3>
+                        <div class="card mt20">
+                            <canvas class="history-chart" id="typeChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Date -->
+                    <div class="w49p">
+                        <h3>📈 Collection by Date</h3>
+                        <div class="card mt20">
+                            <canvas class="history-chart" id="dateChart"></canvas>
                         </div>
                     </div>
                 </div>
@@ -75,7 +93,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/sockjs-client/dist/sockjs.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/stompjs/lib/stomp.min.js"></script>
-
+<script src="/js/lib/chart.umd.min.js"></script>
 <script src="/js/recycleHistory.js"></script>
 
 </body>

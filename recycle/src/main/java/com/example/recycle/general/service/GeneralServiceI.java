@@ -1,7 +1,7 @@
 package com.example.recycle.general.service;
 
-import com.example.recycle.dto.MemberDto;
+import com.example.recycle.dto.UserDto;
 
 public interface GeneralServiceI {
-    void join(MemberDto memberDto) throws Exception;
+    void join(UserDto userDto) throws Exception;
 }

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.security.core.userdetails.User;
 
 import com.example.recycle.dao.GeneralDao;
-import com.example.recycle.dto.MemberDto;
+import com.example.recycle.dto.UserDto;
 
 import lombok.RequiredArgsConstructor;
 
@@ -20,15 +20,15 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        MemberDto member = generalDao.findByUserId(username);
+        UserDto user = generalDao.findByUserId(username);
 
-        if(member == null){
+        if(user == null){
             throw new UsernameNotFoundException(username);
         }
 
         return User.builder()
-                .username(member.getId())
-                .password(member.getPassword())
+                .username(user.getId())
+                .password(user.getPassword())
                 .build();
     }
 }

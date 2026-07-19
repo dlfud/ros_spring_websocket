@@ -12,56 +12,179 @@
                 <a href="/dashboard" class="tab">대시보드</a>
                 <a href="/eventLog" class="tab">이벤트 로그</a>
                 <a href="/recycleHistory" class="tab">쓰레기 수거 현황</a>
-                <a href="/setting" class="tab active">설정</a>
+                <a href="/setting" class="tab active">정보 / 설정</a>
             </nav>
 
             <div class="dashboard">
-                <div class="dflex mb20" style="justify-content: end !important;">
-                    <!-- Control -->
-                    <button class="control-btn start-btn">
-                        Start
-                    </button>
-                    <button class="control-btn stop-btn ml20">
-                        Stop / Return Home
-                    </button>
-                </div>
-
-                <div class="dflex">
-                    <!-- 상태 정보 -->
-                    <div class="card w250 h105">
-                        <h3>🔋 Battery</h3>
-                        <p>Battery : <span id="battery">95%</span></p>
-                        <p>Voltage : <span id="voltage">11.9V</span></p>
-                    </div>
-                    <div class="card w250 h105">
-                        <h3>🤖 Robot Status</h3>
-                        <p>Status : <span id="robotStatus">Idle</span></p>
-                        <p>Speed : <span id="speed">0.00 m/s</span></p>
-                    </div>
-                    <div class="card w250 h105">
-                        <h3>🌐 Detection</h3>
-                        <p>Object : <span class="">Plastic Bottle</span></p>
-                        <p>Confidence : <span class="">98%</span></p>
-                    </div>
-                    <div class="card w250 h105">
-                        <h3>📋 Mission</h3>
-                        <p id="mission">Waiting...</p>
-                    </div>
-                </div>
-
-                <div class="dflex">
-                    <!-- Camera -->
-                    <div class="card camera-card w555 mt20">
-                        <h3>📷 Camera</h3>
-                        <div class="camera-area">
-                            Camera Image
+                <div class="dflex mb20">
+                    <div class="w49p">
+                        <h3 class="mb20">🤖 Robot Information</h3>
+                        <div class="card h325">
+                            <div>
+                                <table class="setting-table">
+                                    <tr>
+                                        <th>Robot Name</th>
+                                        <td>TurtleBot3-01</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Model</th>
+                                        <td>TurtleBot3 Waffle Pi</td>
+                                    </tr>
+                                    <tr>
+                                        <th>ROS Version</th>
+                                        <td>ROS2 Humble</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Current Version</th>
+                                        <td>v1.2.0</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Runtime</th>
+                                        <td>152 Hours</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Last Inspection</th>
+                                        <td>2026-07-15</td>
+                                    </tr>
+                                </table>
+                            </div>
                         </div>
                     </div>
-                    <!-- Map -->
-                    <div class="card map-card w555 mt20">
-                        <h3>🗺 Map</h3>
-                        <div class="map-area">
-                            TurtleBot Map
+                    <div class="w49p">
+                        <h3 class="mb20">💻 System Information</h3>
+                        <div class="card h325">
+                            <div class="setting-body">
+                                <div class="progress-item">
+                                    <div class="progress-title">
+                                        <span>CPU Usage</span>
+                                        <span>62%</span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" style="width:62%;"></div>
+                                    </div>
+                                </div>
+                                <div class="progress-item">
+                                    <div class="progress-title">
+                                        <span>Memory Usage</span>
+                                        <span>48%</span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" style="width:48%;"></div>
+                                    </div>
+                                </div>
+                                <div class="progress-item">
+                                    <div class="progress-title">
+                                        <span>Disk Usage</span>
+                                        <span>37%</span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" style="width:37%;"></div>
+                                    </div>
+                                </div>
+                                <div class="status-row">
+                                    <span>Network</span>
+                                    <span class="status connected">● Connected</span>
+                                </div>
+                                <div class="status-row">
+                                    <span>ROS2</span>
+                                    <span class="status connected">● Connected</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--<div class="dflex">
+                    &lt;!&ndash; Notification &ndash;&gt;
+                    <div class="w49p">
+                        <h3 class="mb20">🔔 Notification Setting</h3>
+                        <div class="card h325">
+                            <div class="setting-body mb20">
+                                <label class="check-box">
+                                    <input type="checkbox" checked>
+                                    Notify when object detected
+                                </label>
+                                <label class="check-box">
+                                    <input type="checkbox" checked>
+                                    Notify when patrol completed
+                                </label>
+                                <label class="check-box">
+                                    <input type="checkbox" checked>
+                                    Notify when error occurred
+                                </label>
+                                <label class="check-box">
+                                    <input type="checkbox" checked>
+                                    Notify when battery is low
+                                </label>
+                            </div>
+                            <div class="card-btn">
+                                <button class="reset-btn">Reset</button>
+                                <button class="save-btn">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                    &lt;!&ndash; Log Storage &ndash;&gt;
+                    <div class="w49p">
+                        <h3 class="mb20">📝 Log Storage</h3>
+                        <div class="card h325">
+                            <div class="setting-body">
+                                <label class="check-box">
+                                    <input type="checkbox" checked>
+                                    Save Patrol Start / End Log
+                                </label>
+                                <label class="check-box">
+                                    <input type="checkbox" checked>
+                                    Save Object Detection Log
+                                </label>
+                                <label class="check-box">
+                                    <input type="checkbox" checked>
+                                    Save Pickup Log
+                                </label>
+                                <label class="check-box">
+                                    <input type="checkbox" checked>
+                                    Save System Error Log
+                                </label>
+                                <label class="check-box">
+                                    <input type="checkbox" checked>
+                                    Save User Command Log
+                                </label>
+                            </div>
+                            <div class="card-btn">
+                                <button class="reset-btn">Reset</button>
+                                <button class="save-btn">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>-->
+
+                <div class="dflex mb20">
+                    <div class="w49p">
+                        <h3 class="mb20">🔍 Detection Setting</h3>
+                        <div class="card h325">
+                            <div class="setting-body mb20">
+                                <h4>Detection Sensitivity</h4>
+                                <label class="radio-box">
+                                    <input type="radio" name="detect" checked>
+                                    Low
+                                </label>
+                                <label class="radio-box">
+                                    <input type="radio" name="detect">
+                                    Normal
+                                </label>
+                                <label class="radio-box">
+                                    <input type="radio" name="detect">
+                                    High
+                                </label>
+                                <div class="setting-info">
+                                    <p>Low = Confidence 0.7</p>
+                                    <p>Normal = Confidence 0.5</p>
+                                    <p>High = Confidence 0.3</p>
+                                </div>
+                            </div>
+                            <div class="card-btn">
+                                <button class="reset-btn">Reset</button>
+                                <button class="save-btn">Save</button>
+                            </div>
                         </div>
                     </div>
                 </div>

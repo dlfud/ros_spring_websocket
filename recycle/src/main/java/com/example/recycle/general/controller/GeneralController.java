@@ -1,8 +1,5 @@
 package com.example.recycle.general.controller;
 
-import java.util.Map;
-
-import ch.qos.logback.core.model.Model;
 import com.example.recycle.general.service.GeneralService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -10,9 +7,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import com.example.recycle.dto.MemberDto;
-
-import jakarta.servlet.http.HttpServletRequest;
+import com.example.recycle.dto.UserDto;
 
 @Controller
 public class GeneralController {
@@ -42,10 +37,10 @@ public class GeneralController {
 
     @PostMapping("/join")
     @ResponseBody
-    public ResponseEntity<Void> join(@RequestBody MemberDto memberDto) throws Exception{
-        memberDto.setPassword(passwordEncoder.encode(memberDto.getPassword()));
+    public ResponseEntity<Void> join(@RequestBody UserDto userDto) throws Exception{
+        userDto.setPassword(passwordEncoder.encode(userDto.getPassword()));
 
-        generalService.join(memberDto);
+        generalService.join(userDto);
         return ResponseEntity.ok().build();
     }
 }

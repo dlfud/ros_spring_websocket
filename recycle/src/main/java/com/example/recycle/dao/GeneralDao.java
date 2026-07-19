@@ -2,10 +2,10 @@ package com.example.recycle.dao;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.example.recycle.dto.MemberDto;
+import com.example.recycle.dto.UserDto;
 
 @Mapper
 public interface GeneralDao {
-	 MemberDto findByUserId(String userId);
-	 int join(MemberDto memberDto) throws Exception;
+	 UserDto findByUserId(String userId);
+	 int join(UserDto userDto) throws Exception;
 }
