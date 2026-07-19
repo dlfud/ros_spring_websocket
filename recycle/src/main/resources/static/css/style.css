@@ -241,6 +241,40 @@
     background:#e53935;
 }
 
+/*search*/
+.search-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
+}
+
+.search-item{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.search-item label{
+    font-weight:bold;
+    color:#1d3557;
+}
+
+.search-item input{
+    width:150px;
+    height:38px;
+    padding:0 10px;
+    border:1px solid #ccc;
+    border-radius:6px;
+}
+
+.search-item select{
+    width:220px;
+    height:40px;
+    border:1px solid #ccc;
+    border-radius:6px;
+    padding:0 10px;
+}
+
 /* Table */
 .event-table{
     width:100%;
@@ -258,6 +292,10 @@
     padding:13px;
     text-align:center;
     border-bottom:1px solid #eee;
+}
+
+.event-table tbody tr{
+    height: 57px;
 }
 
 .event-table tbody tr:hover{

@@ -30,10 +30,39 @@
 
                 <div class="event-header">
                     <div class="event-legend">
-                        <span><i class="dot success"></i> Success</span>
+                        <span><i class="dot success"></i> Task</span>
                         <span><i class="dot detect"></i> Detect</span>
                         <span><i class="dot warning"></i> Warning</span>
                         <span><i class="dot error"></i> Error</span>
+                    </div>
+
+                    <div class="search-row">
+                        <div class="search-item mr20">
+                            <label>Period</label>
+                            <input type="date" id="startDate">
+                            <span>~</span>
+                            <input type="date" id="endDate">
+                        </div>
+                        <div class="search-item mr20">
+                            <label>Event Type</label>
+                            <select id="eventType">
+                                <option value="">All</option>
+                                <option value="PATROL_START">PATROL_START</option>
+                                <option value="PATROL_COMPLETE">PATROL_COMPLETE</option>
+                                <option value="PATROL_RESUME">PATROL_RESUME</option>
+                                <option value="OBJECT_DETECTED">OBJECT_DETECTED</option>
+                                <option value="OBJECT_PICKUP_START">OBJECT_PICKUP_START</option>
+                                <option value="OBJECT_PICKUP_SUCCESS">OBJECT_PICKUP_SUCCESS</option>
+                                <option value="OBJECT_PICKUP_FAIL">OBJECT_PICKUP_FAIL</option>
+                                <option value="BATTERY_LOW">BATTERY_LOW</option>
+                                <option value="NAVIGATION_START">NAVIGATION_START</option>
+                                <option value="NAVIGATION_FAIL">NAVIGATION_FAIL</option>
+                                <option value="USER_COMMAND">USER_COMMAND</option>
+                            </select>
+                        </div>
+                        <div>
+                            <button class="save-btn" onclick="getEventLogList(1);;">Search</button>
+                        </div>
                     </div>
                 </div>
 
@@ -48,128 +77,11 @@
                                 <th>Note</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td><span class="dot success"></span></td>
-                                <td>10:31:15</td>
-                                <td>PATROL_START</td>
-                                <td>순찰을 시작했습니다.</td>
-                                <td>
-                                    <button class="note-btn">
-                                        ...
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><span class="dot detect"></span></td>
-                                <td>10:33:42</td>
-                                <td>OBJECT_DETECTED</td>
-                                <td>Plastic Bottle</td>
-                                <td>
-                                    <button class="note-btn">
-                                        ...
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><span class="dot success"></span></td>
-                                <td>10:34:01</td>
-                                <td>OBJECT_PICKUP_SUCCESS</td>
-                                <td>수거 완료</td>
-                                <td>
-                                    <button class="note-btn">
-                                        ...
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><span class="dot warning"></span></td>
-                                <td>10:42:30</td>
-                                <td>BATTERY_LOW</td>
-                                <td>Battery 20%</td>
-                                <td>
-                                    <button class="note-btn">
-                                        ...
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><span class="dot error"></span></td>
-                                <td>10:43:15</td>
-                                <td>NAVIGATION_FAIL</td>
-                                <td>Goal 접근 실패</td>
-                                <td>
-                                    <button class="note-btn">
-                                        ...
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><span class="dot error"></span></td>
-                                <td>10:43:15</td>
-                                <td>NAVIGATION_FAIL</td>
-                                <td>Goal 접근 실패</td>
-                                <td>
-                                    <button class="note-btn">
-                                        ...
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><span class="dot error"></span></td>
-                                <td>10:43:15</td>
-                                <td>NAVIGATION_FAIL</td>
-                                <td>Goal 접근 실패</td>
-                                <td>
-                                    <button class="note-btn">
-                                        ...
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><span class="dot error"></span></td>
-                                <td>10:43:15</td>
-                                <td>NAVIGATION_FAIL</td>
-                                <td>Goal 접근 실패</td>
-                                <td>
-                                    <button class="note-btn">
-                                        ...
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><span class="dot error"></span></td>
-                                <td>10:43:15</td>
-                                <td>NAVIGATION_FAIL</td>
-                                <td>Goal 접근 실패</td>
-                                <td>
-                                    <button class="note-btn">
-                                        ...
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><span class="dot error"></span></td>
-                                <td>10:43:15</td>
-                                <td>NAVIGATION_FAIL</td>
-                                <td>Goal 접근 실패</td>
-                                <td>
-                                    <button class="note-btn">
-                                        ...
-                                    </button>
-                                </td>
-                            </tr>
-                        </tbody>
+                        <tbody id="eventTbody"></tbody>
                     </table>
                 </div>
 
-                <div class="paging">
-                    <button>&lt;</button>
-                    <button class="active">1</button>
-                    <button>2</button>
-                    <button>3</button>
-                    <button>&gt;</button>
-                </div>
+                <div class="paging" id="pageDiv"></div>
 
             </div>
       	</div>
@@ -182,6 +94,7 @@
 <script src="https://cdn.jsdelivr.net/npm/sockjs-client/dist/sockjs.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/stompjs/lib/stomp.min.js"></script>
 
+<script src="/js/common.js"></script>
 <script src="/js/eventLog.js"></script>
 
 </body>

@@ -14,18 +14,13 @@ async function join() {
         name: document.querySelector("#name").value
     };
 
-    const response = await fetch("/join", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(member)
-    });
+    try {
+        await apiFetch("/join", "POST", member);
 
-    if (response.ok) {
         alert("회원가입 완료");
         location.href = "/login";
-    } else {
+    } catch (e) {
         alert("회원가입 실패");
+        console.error(e);
     }
 }
