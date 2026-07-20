@@ -1,4 +1,49 @@
-// recycleHistory.js
+let totalCountList
+let todayCountList
+
+document.addEventListener("DOMContentLoaded", () => {
+    const today = new Date().toISOString().split('T')[0];
+    document.querySelector("#startDate").value = formatDate(new Date(), { months: -1 });
+    document.querySelector("#endDate").value = formatDate(new Date());
+
+    getCollectionCount()
+    getTypeChart()
+    getDateChart()
+});
+
+let getCollectionCount = async () => {
+    let startDate = document.querySelector("#startDate").value
+    let endDate = document.querySelector("#endDate").value
+    let data = {
+        searchDto: {
+            startDate: startDate === "" ? null : startDate,
+            endDate: endDate === "" ? null : endDate + ' 23:59:59'
+        }
+    }
+
+    totalCountList = await apiFetch("/recycleHistory/getCollectionCount", "POST", data)
+    document.querySelector("#totalCount").innerHTML = totalCountList.collectionCount
+    document.querySelector("#totalSuccess").innerHTML = totalCountList.successCount
+    document.querySelector("#totalFail").innerHTML = totalCountList.failCount
+
+    data = {
+        searchDto: {
+            startDate: formatDate(new Date()),
+            endDate: formatDate(new Date()) + ' 23:59:59'
+        }
+    }
+    todayCountList = await apiFetch("/recycleHistory/getCollectionCount", "POST", data)
+    document.querySelector("#todayCount").innerHTML = todayCountList.collectionCount
+    document.querySelector("#todaySuccess").innerHTML = todayCountList.successCount
+    document.querySelector("#todayFail").innerHTML = todayCountList.failCount
+}
+
+let getTypeChart = () => {
+
+}
+let getDateChart = () => {
+
+}
 
 // 종류별 수거 현황 (Bar Chart)
 collectionTypeLabel = ["Plastic", "Can", "Paper", "Glass"]

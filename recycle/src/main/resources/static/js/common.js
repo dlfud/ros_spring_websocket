@@ -24,3 +24,17 @@ async function apiFetch(url, method = "GET", data = null) {
 
     return await response.json();
 }
+
+function formatDate(date, { years = 0, months = 0, days = 0 } = {}) {
+    const newDate = new Date(date);
+
+    newDate.setFullYear(newDate.getFullYear() + years);
+    newDate.setMonth(newDate.getMonth() + months);
+    newDate.setDate(newDate.getDate() + days);
+
+    const yyyy = newDate.getFullYear();
+    const mm = String(newDate.getMonth() + 1).padStart(2, '0');
+    const dd = String(newDate.getDate()).padStart(2, '0');
+
+    return `${yyyy}-${mm}-${dd}`;
+}

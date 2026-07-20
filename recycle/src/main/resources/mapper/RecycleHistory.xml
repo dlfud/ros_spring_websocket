@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.recycle.dao.RecycleHistoryDao">
+
+    <select id="getCollectionCount" parameterType="com.example.recycle.dto.RecycleHistoryDto" resultType="com.example.recycle.dto.RecycleHistoryDto">
+        SELECT COUNT(*) AS collectionCount,
+               SUM(CASE WHEN `status` = 'Success' THEN 1 ELSE 0 END) AS successCount,
+               SUM(CASE WHEN `status` = 'Fail' THEN 1 ELSE 0 END) AS failCount
+        FROM RECYCLEHISTORY
+        WHERE 1=1
+        <if test="searchDto.startDate != null and searchDto.startDate != ''">
+            AND createTime >= #{searchDto.startDate}
+        </if>
+        <if test="searchDto.endDate != null and searchDto.endDate != ''">
+            AND createTime &lt;= #{searchDto.endDate}
+        </if>
+    </select>
+
+</mapper>

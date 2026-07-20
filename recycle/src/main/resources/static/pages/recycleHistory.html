@@ -16,6 +16,18 @@
             </nav>
 
             <div class="dashboard">
+                <!-- Search -->
+                <div class="search-box mb20">
+                    <input type="date" id="startDate">
+                    <span>~</span>
+                    <input type="date" id="endDate">
+                    <div>
+                        <button class="search-btn">
+                            <img class="search-btn" src="/image/search.png" alt="검색">
+                        </button>
+                    </div>
+                </div>
+
                 <!-- Summary -->
                 <div class="dflex mb20 pb20" style="border-bottom: 1px solid #ddd">
                     <div style="border-right: 1px solid #ddd">
@@ -23,15 +35,15 @@
                         <div class="dflex">
                             <div class="card summary-card mr20">
                                 <div>Total Collection</div>
-                                <strong id="totalCount">260</strong>
+                                <strong id="totalCount">-</strong>
                             </div>
                             <div class="card summary-card mr20">
                                 <div>Success</div>
-                                <strong id="totalSuccess">245</strong>
+                                <strong id="totalSuccess">-</strong>
                             </div>
                             <div class="card summary-card mr20">
                                 <div>Failed</div>
-                                <strong id="totalFail">15</strong>
+                                <strong id="totalFail">-</strong>
                             </div>
                         </div>
                     </div>
@@ -41,32 +53,21 @@
                         <div class="dflex">
                             <div class="card summary-card mr20">
                                 <div>Today's Collection</div>
-                                <strong id="todayCount">12</strong>
+                                <strong id="todayCount">-</strong>
                             </div>
                             <div class="card summary-card mr20">
                                 <div>Success</div>
-                                <strong id="todaySuccess">11</strong>
+                                <strong id="todaySuccess">-</strong>
                             </div>
                             <div class="card summary-card mr20">
                                 <div>Failed</div>
-                                <strong id="todayFail">1</strong>
+                                <strong id="todayFail">-</strong>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Search -->
-                <h3>📅 Search</h3>
-                <div class="search-box mb20">
-                    <input type="date">
-                    <span>~</span>
-                    <input type="date">
-                    <button class="search-btn">
-                        Search
-                    </button>
-                </div>
-
-                <div class="dflex">
+                <div class="dflex mb20">
                     <!-- Type -->
                     <div class="w49p">
                         <h3>♻️ Collection by Type</h3>
@@ -94,6 +95,7 @@
 <script src="https://cdn.jsdelivr.net/npm/sockjs-client/dist/sockjs.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/stompjs/lib/stomp.min.js"></script>
 <script src="/js/lib/chart.umd.min.js"></script>
+<script src="/js/common.js"></script>
 <script src="/js/recycleHistory.js"></script>
 
 </body>
