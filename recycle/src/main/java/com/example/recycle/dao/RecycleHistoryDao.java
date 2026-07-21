@@ -10,4 +10,8 @@ import java.util.List;
 public interface RecycleHistoryDao {
 
     RecycleHistoryDto getCollectionCount(RecycleHistoryDto recycleHistoryDto) throws Exception;
+
+    List<RecycleHistoryDto> getTypeChartData(RecycleHistoryDto recycleHistoryDto) throws Exception;
+
+    List<RecycleHistoryDto> getDateChartData(RecycleHistoryDto recycleHistoryDto) throws Exception;
 }

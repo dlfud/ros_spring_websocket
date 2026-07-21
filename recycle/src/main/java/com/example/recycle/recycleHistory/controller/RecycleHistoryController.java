@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
+
 @Controller
 public class RecycleHistoryController {
     @Autowired
@@ -23,5 +25,17 @@ public class RecycleHistoryController {
     @ResponseBody
     public RecycleHistoryDto getCollectionCount(@RequestBody RecycleHistoryDto recycleHistoryDto) throws Exception{
         return recycleHistoryService.getCollectionCount(recycleHistoryDto);
+    }
+
+    @PostMapping("/recycleHistory/getTypeChartData")
+    @ResponseBody
+    public List<RecycleHistoryDto> getTypeChartData(@RequestBody RecycleHistoryDto recycleHistoryDto) throws Exception{
+        return recycleHistoryService.getTypeChartData(recycleHistoryDto);
+    }
+
+    @PostMapping("/recycleHistory/getDateChartData")
+    @ResponseBody
+    public List<RecycleHistoryDto> getDateChartData(@RequestBody RecycleHistoryDto recycleHistoryDto) throws Exception{
+        return recycleHistoryService.getDateChartData(recycleHistoryDto);
     }
 }

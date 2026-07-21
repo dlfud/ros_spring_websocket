@@ -2,6 +2,8 @@ package com.example.recycle.dto;
 
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public class RecycleHistoryDto {
     private String objectType;
@@ -13,4 +15,6 @@ public class RecycleHistoryDto {
     private int failCount;
 
     private SearchDto searchDto;
+
+    private List<RecycleHistoryDto> recycleList;
 }
