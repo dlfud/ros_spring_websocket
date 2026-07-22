@@ -304,52 +304,32 @@
 
 /*note modal*/
 .note-btn{
-    width:30px;
-    height:30px;
-    border-radius:6px;
-    background:#f5f5f5;
-    font-size:18px;
-    font-weight:bold;
+    width:27px;
+    height:27px;
 }
 
 .note-btn:hover{
-    background:#1976d2;
+    border-radius: 50px;
+    background:#d7d7d7;
     color:white;
 }
 
 .modal{
     display:none;
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.45);
-
-    justify-content:center;
-    align-items:center;
-
+    position: absolute;
     z-index:1000;
 }
 
 .modal-content{
-    width:500px;
+    max-width:500px;
     background:white;
     border-radius:10px;
     overflow:hidden;
     box-shadow:0 10px 25px rgba(0,0,0,.25);
 }
 
-.modal-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-
-    padding:15px 20px;
-    background:#1d3557;
-    color:white;
-}
-
 .modal-body{
-    padding:20px;
-    line-height:1.8;
+    padding:10px;
     max-height:350px;
     overflow:auto;
 }
@@ -480,32 +460,6 @@
     justify-content: end;
 }
 
-/* 버튼 */
-.save-btn{
-    width:100px;
-    height:40px;
-    border:none;
-    border-radius:5px;
-    background:#1976d2;
-    color:white;
-    font-weight:bold;
-}
-
-.reset-btn{
-    width:100px;
-    height:40px;
-    border:none;
-    border-radius:5px;
-    background:#757575;
-    color:white;
-    font-weight:bold;
-}
-
-.save-btn:hover,
-.reset-btn:hover{
-    opacity:.85;
-}
-
 /* Robot Table */
 .setting-table{
     width:100%;
@@ -532,35 +486,6 @@
 
 .setting-body h4{
     margin-bottom:10px;
-}
-
-/* Radio */
-.radio-box{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    font-size:17px;
-}
-
-/* Checkbox */
-.check-box{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    font-size:17px;
-}
-
-/* 설명 */
-.setting-info{
-    margin-top:10px;
-    padding:15px;
-    background:#f5f7fa;
-    border-radius:8px;
-}
-
-.setting-info p{
-    margin:0px 0;
-    color:#666;
 }
 
 /* Progress */

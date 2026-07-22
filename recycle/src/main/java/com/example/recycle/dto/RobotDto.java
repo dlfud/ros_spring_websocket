@@ -7,7 +7,4 @@ public class RobotDto {
     private String name;
     private String model;
     private String rosVersion;
-    private String currentVersion;
-    private int runTime;
-    private String lastInspection;
 }

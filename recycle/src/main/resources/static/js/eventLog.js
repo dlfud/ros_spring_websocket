@@ -4,6 +4,9 @@ let eventLogCount
 let eventLogList
 let pageNumber = 1
 document.addEventListener("DOMContentLoaded", () => {
+    document.querySelector("#startDate").value = formatDate(new Date(), { months: -1 });
+    document.querySelector("#endDate").value = formatDate(new Date());
+
     getEventLogList(1);
 });
 
@@ -42,9 +45,7 @@ let getEventLogList = async (page) => {
         if(log.note){
             note = `
                 <td>
-                    <button class="note-btn" data-note="${log.note}">
-                        ...
-                    </button>
+                    <img class="note-btn" data-note="${log.note}" src="/image/noteMore.png">
                 </td>
             `
         }else{
@@ -65,43 +66,22 @@ let getEventLogList = async (page) => {
     table.innerHTML = tbody
 
     document.querySelectorAll(".note-btn").forEach(btn => {
-        btn.addEventListener("click", () => {
+        const modal = document.getElementById("noteModal");
+        btn.addEventListener("mouseenter", () => {
             noteText.textContent = btn.dataset.note;
-            modal.style.display = "flex";
+            modal.style.display = "block";
+            const rect = btn.getBoundingClientRect();
+            modal.style.left = `${rect.left + window.scrollX - modal.offsetWidth - 10}px`;
+            modal.style.top = `${rect.top + window.scrollY - modal.offsetHeight / 2 + 10}px`;
+        });
+
+        btn.addEventListener("mouseleave", () => {
+            modal.style.display = "none";
         });
     });
 
     paging()
 }
-
-const modal = document.getElementById("noteModal");
-const noteText = document.getElementById("noteText");
-
-document.querySelector(".close-btn").onclick = () => {
-    modal.style.display = "none";
-};
-
-modal.onclick = e => {
-    if(e.target === modal){
-        modal.style.display = "none";
-    }
-};
-
-//socket
-const socket = new SockJS("/ws");
-
-const stomp = Stomp.over(socket);
-
-stomp.connect({}, function(){
-    console.log("WebSocket connected");
-
-    stomp.subscribe(
-        "/topic/status",
-        function(message){
-            console.log(message.body);
-        }
-    );
-});
 
 //paging
 let paging = () => {
@@ -141,3 +121,20 @@ let movePage = (page) => {
     getEventLogList(page);
     paging();
 }
+
+
+//socket
+const socket = new SockJS("/ws");
+
+const stomp = Stomp.over(socket);
+
+stomp.connect({}, function(){
+    console.log("WebSocket connected");
+
+    stomp.subscribe(
+        "/topic/status",
+        function(message){
+            console.log(message.body);
+        }
+    );
+});

@@ -24,27 +24,15 @@
                                 <table class="setting-table">
                                     <tr>
                                         <th>Robot Name</th>
-                                        <td>TurtleBot3-01</td>
+                                        <td id="robotName">TurtleBot3-01</td>
                                     </tr>
                                     <tr>
-                                        <th>Model</th>
-                                        <td>TurtleBot3 Waffle Pi</td>
+                                        <th>Robot Model</th>
+                                        <td id="robotModel">TurtleBot3 Waffle Pi</td>
                                     </tr>
                                     <tr>
                                         <th>ROS Version</th>
-                                        <td>ROS2 Humble</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Current Version</th>
-                                        <td>v1.2.0</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Runtime</th>
-                                        <td>152 Hours</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Last Inspection</th>
-                                        <td>2026-07-15</td>
+                                        <td id="rosVersion">ROS2 Humble</td>
                                     </tr>
                                 </table>
                             </div>
@@ -93,101 +81,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!--<div class="dflex">
-                    &lt;!&ndash; Notification &ndash;&gt;
-                    <div class="w49p">
-                        <h3 class="mb20">🔔 Notification Setting</h3>
-                        <div class="card h325">
-                            <div class="setting-body mb20">
-                                <label class="check-box">
-                                    <input type="checkbox" checked>
-                                    Notify when object detected
-                                </label>
-                                <label class="check-box">
-                                    <input type="checkbox" checked>
-                                    Notify when patrol completed
-                                </label>
-                                <label class="check-box">
-                                    <input type="checkbox" checked>
-                                    Notify when error occurred
-                                </label>
-                                <label class="check-box">
-                                    <input type="checkbox" checked>
-                                    Notify when battery is low
-                                </label>
-                            </div>
-                            <div class="card-btn">
-                                <button class="reset-btn">Reset</button>
-                                <button class="save-btn">Save</button>
-                            </div>
-                        </div>
-                    </div>
-                    &lt;!&ndash; Log Storage &ndash;&gt;
-                    <div class="w49p">
-                        <h3 class="mb20">📝 Log Storage</h3>
-                        <div class="card h325">
-                            <div class="setting-body">
-                                <label class="check-box">
-                                    <input type="checkbox" checked>
-                                    Save Patrol Start / End Log
-                                </label>
-                                <label class="check-box">
-                                    <input type="checkbox" checked>
-                                    Save Object Detection Log
-                                </label>
-                                <label class="check-box">
-                                    <input type="checkbox" checked>
-                                    Save Pickup Log
-                                </label>
-                                <label class="check-box">
-                                    <input type="checkbox" checked>
-                                    Save System Error Log
-                                </label>
-                                <label class="check-box">
-                                    <input type="checkbox" checked>
-                                    Save User Command Log
-                                </label>
-                            </div>
-                            <div class="card-btn">
-                                <button class="reset-btn">Reset</button>
-                                <button class="save-btn">Save</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>-->
-
-                <div class="dflex mb20">
-                    <div class="w49p">
-                        <h3 class="mb20">🔍 Detection Setting</h3>
-                        <div class="card h325">
-                            <div class="setting-body mb20">
-                                <h4>Detection Sensitivity</h4>
-                                <label class="radio-box">
-                                    <input type="radio" name="detect" checked>
-                                    Low
-                                </label>
-                                <label class="radio-box">
-                                    <input type="radio" name="detect">
-                                    Normal
-                                </label>
-                                <label class="radio-box">
-                                    <input type="radio" name="detect">
-                                    High
-                                </label>
-                                <div class="setting-info">
-                                    <p>Low = Confidence 0.7</p>
-                                    <p>Normal = Confidence 0.5</p>
-                                    <p>High = Confidence 0.3</p>
-                                </div>
-                            </div>
-                            <div class="card-btn">
-                                <button class="reset-btn">Reset</button>
-                                <button class="save-btn">Save</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
       	</div>
     </div>
@@ -198,7 +91,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/sockjs-client/dist/sockjs.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/stompjs/lib/stomp.min.js"></script>
-
+<script src="/js/common.js"></script>
 <script src="/js/setting.js"></script>
 
 </body>
